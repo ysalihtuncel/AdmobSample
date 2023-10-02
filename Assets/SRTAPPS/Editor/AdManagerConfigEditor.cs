@@ -36,6 +36,13 @@ namespace SRTAPPS.AdmobAdManager
 
             AdManagerConfig AMC = (AdManagerConfig)target;
             EditorGUILayout.BeginVertical();
+            EditorGUILayout.HelpBox("GDPR mesajı oluşturmak için Admob üzerinden 'Gizlilik ve Mesajlaşma' menüsünden GDPR sekmesi altında mesajını yayınlayabilirsiniz. GDPR mesajı oluşturma rehberi için butona basın.", MessageType.Info);
+            if (GUILayout.Button("GDPR MESAJI OLUŞTUR"))
+            {
+                Application.OpenURL("https://support.google.com/admob/answer/10113207");
+            }
+            
+            AMC.GPDR = (GPDR_MODE) EditorGUILayout.EnumPopup("GDPR Modu", AMC.GPDR);
             EditorGUILayout.HelpBox("Reklamı aktif hale getirmek için true setlemeniz gerekiyor. Aksi halde reklam tipi uygulama içinde çalışmaz. Boş bırakılan reklam idleri de çalışmaz.", MessageType.Info);
             AMC.BannerEnabled = EditorGUILayout.Toggle(new GUIContent("Banner Enabled", "True olursa banner reklamı çalışır"), AMC.BannerEnabled);
             if (AMC.BannerEnabled)

@@ -17,6 +17,7 @@ namespace SRTAPPS.AdmobAdManager
         BannerView _bannerView;
         InterstitialAd _interstitialAd;
         RewardedAd _rewardedAd;
+        bool waitGDPR = true;
 
         #region AD IDS
         private const string BANNER_TEST_ID = "ca-app-pub-3940256099942544/6300978111";
@@ -46,7 +47,8 @@ namespace SRTAPPS.AdmobAdManager
 #endif
                 Instance = this;
                 DontDestroyOnLoad(this.gameObject);
-                Initialize();
+                GPDR_Initialize();
+                StartCoroutine(Initialize());
 
             }
             else
@@ -54,8 +56,115 @@ namespace SRTAPPS.AdmobAdManager
                 Destroy(this.gameObject);
             }
         }
-        void Initialize()
+
+        void GPDR_Initialize()
         {
+
+            if (AMC.GPDR == GPDR_MODE.DevelopmentMode)
+            {
+                waitGDPR = false;
+                return;
+            }
+
+            var debugSettings = new ConsentDebugSettings
+            {
+                // Geography appears as in EEA for debug devices.
+                DebugGeography = DebugGeography.EEA,
+                TestDeviceHashedIds = new List<string>
+                {
+                    AdMobUtility.GetTestDeviceId()
+                }
+            };
+            // Set tag for under age of consent.
+            // Here false means users are not under age.
+            ConsentRequestParameters request = AMC.GPDR == GPDR_MODE.DevelopmentTestMode ?
+            new ConsentRequestParameters
+            {
+                TagForUnderAgeOfConsent = false,
+                ConsentDebugSettings = debugSettings,
+            } :
+            new ConsentRequestParameters
+            {
+                TagForUnderAgeOfConsent = false,
+            };
+
+            // Check the current consent information status.
+            ConsentInformation.Update(request, OnConsentInfoUpdated);
+        }
+
+        void OnConsentInfoUpdated(FormError error)
+        {
+            if (error != null)
+            {
+                // Handle the error.
+                UnityEngine.Debug.LogError(error);
+                waitGDPR = false;
+                return;
+            }
+
+            // If the error is null, the consent information state was updated.
+            // You are now ready to check if a form is available.
+            if (ConsentInformation.IsConsentFormAvailable())
+            {
+                LoadConsentForm();
+            }
+            else
+            {
+                waitGDPR = false;
+            }
+        }
+
+        private ConsentForm _consentForm;
+
+        void LoadConsentForm()
+        {
+            // Loads a consent form.
+            ConsentForm.Load(OnLoadConsentForm);
+        }
+
+        void OnLoadConsentForm(ConsentForm consentForm, FormError error)
+        {
+            if (error != null)
+            {
+                waitGDPR = false;
+                // Handle the error.
+                UnityEngine.Debug.LogError(error);
+                return;
+            }
+
+            // The consent form was loaded.
+            // Save the consent form for future requests.
+            _consentForm = consentForm;
+
+            // You are now ready to show the form.
+            if (ConsentInformation.ConsentStatus == ConsentStatus.Required)
+            {
+                _consentForm.Show(OnShowForm);
+                return;
+            }
+            waitGDPR = false;
+        }
+
+        void OnShowForm(FormError error)
+        {
+            if (error != null)
+            {
+                // Handle the error.
+                UnityEngine.Debug.LogError(error);
+                waitGDPR = false;
+                return;
+            }
+
+            // Handle dismissal by reloading form.
+            waitGDPR = false;
+        }
+
+        IEnumerator Initialize()
+        {
+            while (waitGDPR)
+            {
+                yield return null;
+            }
             // Initialize the Google Mobile Ads SDK.
             MobileAds.Initialize(initStatus =>
             {

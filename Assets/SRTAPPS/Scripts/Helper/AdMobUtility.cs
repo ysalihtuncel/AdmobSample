@@ -20,8 +20,10 @@ namespace SRTAPPS.AdmobAdManager
         /// <returns>The test device identifier.</returns>
         public static string GetTestDeviceId()
         {
-#if UNITY_IOS
-		return Device.advertisingIdentifier.CalculateMD5Hash();
+#if UNITY_EDITOR
+            return "";
+#elif UNITY_IOS
+		    return Device.advertisingIdentifier.CalculateMD5Hash();
 #elif UNITY_ANDROID
             return GetAndroidId().CalculateMD5Hash().ToUpper();
 #else

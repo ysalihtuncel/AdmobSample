@@ -16,6 +16,9 @@ namespace SRTAPPS.AdmobAdManager
         public string InterstitialAdID;
         public string RewardedAdID;
         public bool LogMessages = true;
+        public GPDR_MODE GPDR;
     }
+
+    public enum GPDR_MODE { DevelopmentMode = 0, DevelopmentTestMode = 1, ProductionMode = 2, }
 
 }
