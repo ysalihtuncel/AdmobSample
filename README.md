@@ -28,41 +28,50 @@ GDPR ayarlarınız için:<br>
 Eğer Banner reklamını aktif ettiyseniz otomatik olarak gösterilecektir.<br>
 
 Banner reklamını başka bir script ile kaldırmak için:<br>
- `using SRTAPPS.AdmobAdManager;`<br>
-   `...`<br>
-   `AdManager.Instance.DestroyBannerView();`<br>
+```
+using SRTAPPS.AdmobAdManager;
+...
+AdManager.Instance.DestroyBannerView();
+```
 Banner reklamını başka bir script ile göstermek için:<br>
-   `using SRTAPPS.AdmobAdManager;`<br>
-   `...`<br>
-   `AdManager.Instance.LoadBannerAd();`<br>
+```
+using SRTAPPS.AdmobAdManager;
+...
+AdManager.Instance.LoadBannerAd();
+```
 şeklinde çağırmanız yeterli olacaktır.<br>
 
 ## Interstitial Reklamları
 Interstitial reklamları kullanmak için, aşağıdaki kodu kullanabilirsiniz:<br>
-`using SRTAPPS.AdmobAdManager`<br>
-`...`<br>
-`AdManager.Instance.ShowInterstitialAd();`<br>
+```
+using SRTAPPS.AdmobAdManager
+...
+`AdManager.Instance.ShowInterstitialAd();
+```
 Geçiş reklama kapatıldığı zaman yeni geçiş reklamı yükleme kodu çalışacaktır.<br>
 
 ## Rewarded Reklamlar
 Rewarded reklamları kullanmak için, aşağıdaki kodu kullanabilirsiniz. Ödül türünü kullanmak için onAdReward event'ine subscribe olmanız gerekiyor:<br>
-`using SRTAPPS.AdmobAdManager`<br>
-`...`<br>
-`//Event yardımı ile ödüllü reklam çalıştırılıyor`<br>
-`private void OnEnable() {`<br>
- `   AdManager.Instance.onAdReward += UserEarnedReward;`<br>
-`}`<br>
-`private void OnDisable() {`<br>
-`   AdManager.Instance.onAdReward -= UserEarnedReward;`<br>
-`}`
-`void UserEarnedReward(string reward)`<br>
-`{`<br>
-`    //Hangi ödül olduğu mantığını burada tanımlamak gerekiyor`<br>
-`   Debug.Log($"\n{System.DateTime.Now.ToString("HH:mm")}: Rewarded öldülü verildi. Ödül: {reward}");`<br>
-`}`<br>
-
+```
+using SRTAPPS.AdmobAdManager
+...
+//Event yardımı ile ödüllü reklam çalıştırılıyor
+private void OnEnable() {
+   AdManager.Instance.onAdReward += UserEarnedReward;
+}
+private void OnDisable() {
+   AdManager.Instance.onAdReward -= UserEarnedReward;
+}
+void UserEarnedReward(string reward)
+{
+   //Hangi ödül olduğu mantığını burada tanımlamak gerekiyor
+   Debug.Log($"\n{System.DateTime.Now.ToString("HH:mm")}: Rewarded öldülü verildi. Ödül: {reward}");
+}
+```
 Rewarded göstermek için:<br>
-`AdManager.Instance.ShowRewardedAd("ödül tipi");`<br>
+```
+AdManager.Instance.ShowRewardedAd("ödül tipi");
+```
 şeklinde çağırmanız yeterli olacaktır.<br>
 
 
