@@ -1,4 +1,4 @@
-![Cover Image](https://github.com/ysalihtuncel/AdmobSample/tree/main/Assets/SRTAPPS/Sprites/cover.png?raw=true)
+![Cover Image](https://raw.githubusercontent.com/ysalihtuncel/AdmobSample/main/Assets/SRTAPPS/Sprites/cover_new.png)
 
 # AdMob Reklam Yönetimi
 GoogleMobileAds-v8.5.1.unitypackage kullanıılmıştır.
