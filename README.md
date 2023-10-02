@@ -1,5 +1,7 @@
 ![Cover Image](https://raw.githubusercontent.com/ysalihtuncel/AdmobSample/main/Assets/SRTAPPS/Sprites/cover_new.png)
 
+# Paket Halinde indirmek için:
+[Paket Linki](https://drive.google.com/file/d/11MObyy09AiQ9SFIMQC_3x9Ib9fEzFKXr/view?usp=sharing)<br>
 # AdMob Reklam Yönetimi
 GoogleMobileAds-v8.5.1.unitypackage kullanıılmıştır.<br>
 Google'ın kullanıcı rızası yönetim çözümünü kullanmak isterseniz öncelikle GDPR mesajınızı oluşturun. UMP SDK'sı GoogleMobileAds-v8.5.1.unitypackage ile projede bulunuyor ve komut dosyası içeriğine dahil edilmiştir.<br>
