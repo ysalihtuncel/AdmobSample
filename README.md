@@ -13,7 +13,7 @@ Paket Halinde indirmek için:
 [Paket Linki](https://drive.google.com/file/d/11MObyy09AiQ9SFIMQC_3x9Ib9fEzFKXr/view?usp=sharing)<br>
 
 ## Config Ayarları:
-Assets/SRTAPPS/Resources dizini altında bulunan **AdManagerConfig** scriptable objesi ile reklam ayarlarınızı düzenleyebilirsiniz. Reklam türlerine göre enabled/disabled hale getirebilirsiniz.<br>
+Assets/SRTAPPS/Resources dizini altında bulunan **AdManagerConfig** scriptable objesi ile reklam ayarlarınızı düzenleyebilirsiniz.<br> Reklam türlerine göre enabled/disabled hale getirebilirsiniz.<br>
 Bunun için yapmanız gerekn çok basit:<br>
   **Banner için örnek:**<br>
   AdManagerConfig.asset dosyasında Unity editor içinde inspector penceresinden **bannerEnabled** değerini true olarak ayarlayın.<br>
