@@ -1,7 +1,5 @@
 ![Cover Image](https://raw.githubusercontent.com/ysalihtuncel/AdmobSample/main/Assets/SRTAPPS/Sprites/cover_new.png)
 
-# Paket Halinde indirmek için:
-[Paket Linki](https://drive.google.com/file/d/11MObyy09AiQ9SFIMQC_3x9Ib9fEzFKXr/view?usp=sharing)<br>
 # AdMob Reklam Yönetimi
 GoogleMobileAds-v8.5.1.unitypackage kullanıılmıştır.<br>
 Google'ın kullanıcı rızası yönetim çözümünü kullanmak isterseniz öncelikle GDPR mesajınızı oluşturun. UMP SDK'sı GoogleMobileAds-v8.5.1.unitypackage ile projede bulunuyor ve komut dosyası içeriğine dahil edilmiştir.<br>
@@ -10,6 +8,9 @@ Projede çalışması için projenizi imzalamış olmanız gerekiyor. GDPR const
 Bu proje, Unity kullanarak AdMob reklamlarını yönetmek için bir örnek sunar. Projede banner, interstitial ve rewarded reklamları nasıl kullanacağınızı öğrenebilirsiniz.<br>
 **Development build ve Unity Editor üzerinde sadece test reklamları çalışacak şekilde ayarlanmıştır. Geçersiz trafikten korunmak için projeniz bittiği zaman gerçek reklam kimliklerinizi kullanın.<br>
 Hiç bir şekilde kendi reklamlarınıza tıklamayın. Aksi taktirde _geçersiz trafik_ kısıtlaması almanız muhtemel olacaktır!**<br>
+<br>
+Paket Halinde indirmek için:
+[Paket Linki](https://drive.google.com/file/d/11MObyy09AiQ9SFIMQC_3x9Ib9fEzFKXr/view?usp=sharing)<br>
 
 ## Config Ayarları:
 Assets/SRTAPPS/Resources dizini altında bulunan **AdManagerConfig** scriptable objesi ile reklam ayarlarınızı düzenleyebilirsiniz. Reklam türlerine göre enabled/disabled hale getirebilirsiniz.<br>
